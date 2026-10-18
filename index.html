@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+
 <title>English Unit Book — اردو نستعلیق</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,6 +95,9 @@ body::after{content:"Prepared by Rafiullah khan";position:fixed;left:50%;top:50%
 #totop.show{opacity:1;visibility:visible;transform:none}
 #totop span{font-family:"Noto Nastaliq Urdu",serif;font-weight:400;line-height:1.6}
 @media print{#totop{display:none}}
+html,body{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-touch-callout:none}
+img,a{-webkit-user-drag:none}
+@media print{html,body{display:none!important;visibility:hidden!important}}
 </style>
 </head>
 <body>
@@ -4951,6 +4955,18 @@ body::after{content:"Prepared by Rafiullah khan";position:fixed;left:50%;top:50%
     if(x.dataset.v!=='both')b.classList.add('only-'+x.dataset.v);
     btns.forEach(function(y){y.setAttribute('aria-pressed',y===x)});
   }});
+})();
+</script>
+<script>
+(function(){
+  var stop=function(e){e.preventDefault();return false};
+  ['contextmenu','copy','cut','dragstart','selectstart'].forEach(function(t){document.addEventListener(t,stop)});
+  document.addEventListener('keydown',function(e){
+    var k=(e.key||'').toLowerCase(),c=e.ctrlKey||e.metaKey;
+    if((c&&['s','p','u','c','x','a'].indexOf(k)>-1)||(c&&e.shiftKey&&['i','j','c'].indexOf(k)>-1)||e.key==='F12'||e.key==='PrintScreen'){e.preventDefault();return false}
+  });
+  window.addEventListener('beforeprint',function(){document.documentElement.style.display='none'});
+  window.addEventListener('afterprint',function(){document.documentElement.style.display=''});
 })();
 </script>
 </body>
